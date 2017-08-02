@@ -1,0 +1,10 @@
+<div class="recipe-list">
+  <div class="flex-parent">
+    <button type="button" class="btn btn-info" 
+      *ngFor="let pizza of pizzas"
+      (click)="selectPizza(pizza)"
+    >
+      {{ pizza.name }}
+    </button>
+  </div>
+</div>

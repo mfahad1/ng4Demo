@@ -1,16 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
+
+export const ROUTES: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+  { path: 'report', loadChildren: './reports/report.module#ReportModule' },
+  { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+];
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    NgbModule.forRoot(),
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
